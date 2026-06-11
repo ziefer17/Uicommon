@@ -1,0 +1,282 @@
+#root {
+  background-color: #121212;
+  min-height: 100vh;
+}
+
+/* --- Base layout --- */
+.home {
+  background: radial-gradient(circle at top, #0f172a 0%, #000 70%);
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Hero section (Giữ nguyên) --- */
+.hero {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+}
+.hero-badge {
+  color: #22c55e;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #fff, #60a5fa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+  color: #a1a1aa;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+.hero-search {
+  display: flex;
+  justify-content: center;
+  background: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
+}
+.hero-search input {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+.hero-search button {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border: none;
+  padding: 0 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+.hero-search button:hover {
+  background: linear-gradient(135deg, #818cf8, #a78bfa);
+}
+
+/* --- GRID (Giữ nguyên) --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 36px;
+  align-items: start;
+  width: 100%;
+  max-width: 1800px;
+  margin: 80px auto;
+  padding: 0 40px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* --- 
+--- BẮT ĐẦU SỬA LỖI --- 
+---
+*/
+
+/* --- CARD --- */
+.card {
+  background: #0b0b0b;
+  border: 1px solid #141414;
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative; /* BẮT BUỘC */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* XÓA display: flex và các thuộc tính con */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+
+  /* Lớp phủ mờ (vẫn giữ) */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    z-index: 5; /* Lớp giữa */
+  }
+
+  /* .card-title không có trong JSX, bạn có thể thêm lại sau
+  &-title {
+    ...
+  }
+  */
+
+  /* --- Nút "Get code" --- */
+  .card-copy {
+    position: absolute;
+    /* Đặt ở góc phải dưới */
+    bottom: 14px;
+    right: 18px;
+    z-index: 10; /* Lớp trên cùng */
+
+    /* Style (giữ nguyên) */
+
+    backdrop-filter: blur(8px);
+
+    padding: 10px 16px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+
+    /* Ẩn đi mặc định */
+    opacity: 0;
+    transform: translateY(5px); /* Hiệu ứng trượt nhẹ */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    cursor: pointer; /* Thêm cursor */
+  }
+
+  iframe,
+  canvas,
+  > div {
+    /* ĐỊNH VỊ CHO PREVIEW */
+    position: absolute;
+    inset: 0; /* top: 0, left: 0, right: 0, bottom: 0 */
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Lớp dưới cùng */
+
+    border: none;
+    pointer-events: none;
+    background: transparent;
+    transition: opacity 0.3s ease;
+  }
+
+  /* --- HIỆU ỨNG KHI HOVER --- */
+  &:hover {
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 22px rgba(59, 130, 246, 0.25);
+
+    /* Hiện lớp phủ mờ */
+    &::before {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Mờ preview đi */
+    iframe,
+    canvas,
+    > div {
+      opacity: 0.5;
+    }
+
+    /* Hiện nút "Get code" */
+    .card-copy {
+      opacity: 1;
+      transform: translateY(0); /* Hoàn thành hiệu ứng trượt */
+      pointer-events: auto; /* Cho phép click */
+    }
+  }
+
+  /* Hiệu ứng ánh sáng (Giữ nguyên) */
+  &:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    pointer-events: none;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* --- PREVIEW bên trong CARD --- */
+.card iframe,
+.card canvas,
+.card > div {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+  background: transparent;
+}
+
+/* --- Hiệu ứng hover ánh sáng --- */
+.card:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+/* --- Các style không dùng trong Home.tsx (nhưng có thể dùng ở chỗ khác) --- */
+.search {
+  width: 300px;
+  padding: 10px 14px 10px 40px; /* thêm chỗ trống bên trái để chứa icon */
+  margin: 10px 0;
+  border-radius: 25px;
+  border: 1px solid #333;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: 12px center;
+}
+.search:focus {
+  border-color: #7b5cff;
+  box-shadow: 0 0 8px rgba(123, 92, 255, 0.6);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.create-btn {
+  background: linear-gradient(90deg, #7b5cff, #8f65ff);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.preview {
+  width: 100%;
+  height: 370px;
+  border: none;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}

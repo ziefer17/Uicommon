@@ -1,0 +1,124 @@
+.favourites-page {
+  color: #fff;
+  padding: 40px;
+
+  h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .fav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .fav-card {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: #555;
+    }
+
+    .fav-thumb {
+      background: #111;
+      height: 150px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    h3 {
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    p {
+      margin: 0 10px 12px;
+      color: #aaa;
+      font-size: 13px;
+    }
+  }
+
+  .empty-fav {
+    text-align: center;
+    color: #999;
+    margin-top: 80px;
+    font-size: 16px;
+  }
+}
+.favourites-page {
+  padding: 40px;
+  color: white;
+
+  .fav-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+
+  .fav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .fav-card {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 16px;
+    transition: 0.2s ease;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.1);
+    }
+
+    .fav-link {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .fav-meta {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .fav-author {
+        font-weight: 600;
+      }
+
+      .fav-stats {
+        font-size: 13px;
+        color: #ccc;
+        display: flex;
+        gap: 10px;
+
+        span {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+    }
+  }
+
+  .empty-fav {
+    text-align: center;
+    margin-top: 60px;
+    color: #888;
+  }
+}

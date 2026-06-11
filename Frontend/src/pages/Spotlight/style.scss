@@ -1,0 +1,292 @@
+.spotlight {
+  padding: 50px 20px 80px; // Thêm padding dưới để có không gian cho nút Show top 50
+  background-color: #0d0d0d; // Nền tối
+  min-height: 100vh;
+  color: #fff;
+
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+  }
+
+  &__subtitle-main {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+
+  &__subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  /* Tabs */
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    // Kiểu dáng container có viền như trong hình ảnh mới nhất
+    border: 1px solid #333;
+    border-radius: 8px;
+    max-width: fit-content;
+    margin: 0 auto 25px;
+    background: #111;
+    padding: 2px; // Đệm nhỏ cho viền
+  }
+
+  &__tab {
+    padding: 10px 20px;
+    background: transparent; // Tab bình thường không có nền
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #aaa;
+    font-weight: 500;
+    transition: 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: #1e1e1e;
+      border-color: #555;
+    }
+
+    &--active {
+      background: #7b5cff; // Màu active
+      border-color: #7b5cff;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(123, 92, 255, 0.4);
+    }
+  }
+
+  /* Grid */
+  &__grid {
+    display: grid;
+    margin-top: 20px;
+    // Mặc định cho Creator Card: 4 cột
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px 20px;
+    justify-content: center;
+
+    &--weekly {
+      // Weekly Highlights: 3 cột lớn
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &__grid {
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(220px, 1fr)
+      ); // 4 cột nhỏ hơn
+    }
+  }
+
+  @media (max-width: 800px) {
+    &__grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); // 2-3 cột
+    }
+    &__grid--weekly {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // 1-2 cột
+    }
+  }
+
+  /* Card wrapper */
+  &__card-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    &--creator {
+      // Creator card không cần chiều cao cố định
+      height: auto;
+    }
+  }
+
+  /* Component Card (Weekly Highlights) */
+  &__card {
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 15px;
+    height: 500px;
+    text-decoration: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 8px 18px rgba(123, 92, 255, 0.2);
+    }
+  }
+
+  /* Meta info */
+  &__meta {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+    color: #eee;
+
+    &--weekly {
+      justify-content: flex-start; // Căn trái cho weekly
+      gap: 20px;
+
+      .spotlight__stats {
+        margin-left: auto; // Đẩy stats sang phải
+      }
+    }
+  }
+
+  &__weekly-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    strong {
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+
+  &__creator-avatar-sm {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 14px;
+    color: #aaa;
+    font-size: 13px;
+
+    span {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+  }
+
+  /* Creator Card (Top Creators, Most Favorites, Most Views) */
+  &__creator-card {
+    background: #181818;
+    padding: 15px 15px 10px;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.25s;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #222;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 18px #ffffff2b;
+      border-color: #7b5cff;
+    }
+  }
+
+  &__creator-avatar {
+    width: 60px; // Kích thước avatar nhỏ hơn cho layout ngang
+    height: 60px;
+    min-width: 60px; // Đảm bảo không bị co lại
+    border-radius: 50%;
+    object-fit: cover;
+    // margin: 12px auto; // Bỏ margin auto do layout ngang
+    display: block;
+    border: 3px solid #7b5cff; // Viền màu tím
+  }
+
+  &__creator-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+
+    strong {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+  }
+
+  &__creator-stats {
+    display: flex;
+    justify-content: space-between; // Posts Count và Score
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+  }
+
+  &__creator-score {
+    color: #7b5cff !important;
+    font-weight: bold;
+  }
+
+  &__creator-posts {
+    color: #aaa !important;
+  }
+
+  /* Skeleton Loader */
+  &__skeleton {
+    width: 100%;
+    height: 230px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #1a1a1a, #2a2a2a, #1a1a1a);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+  }
+
+  /* Show Top Button */
+  &__show-top {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  &__show-top-button {
+    padding: 10px 40px;
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 16px;
+    transition: 0.2s;
+
+    &:hover {
+      background: #272727;
+      border-color: #555;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

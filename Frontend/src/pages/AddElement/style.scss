@@ -1,0 +1,455 @@
+@use "sass:color";
+
+$primary-color: #61dafb;
+$background-color: #121212;
+$surface-color: #1e1e1e;
+$text-color: #e0e0e0;
+$border-color: #333;
+
+.detail.add-element {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: $background-color;
+  border-radius: 12px;
+  color: $text-color;
+
+  a {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 500;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  .detail__row {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+    min-height: 600px;
+  }
+
+  .detail__preview {
+    flex: 0.9;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+
+  .detail__code-viewer {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      height: 100%;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-weight: 600;
+        color: #ccc;
+        font-size: 1rem;
+      }
+
+      input {
+        background-color: $surface-color;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        color: $text-color;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        font-family: "Fira Code", Consolas, Monaco, monospace;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.3);
+        }
+      }
+    }
+
+    .tabs {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      &__header {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      &__button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        background-color: #2a2a2a;
+        color: #ccc;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #3a3a3a;
+        }
+
+        &--active {
+          background-color: $primary-color;
+          color: $background-color;
+        }
+      }
+
+      .tabs__content {
+        border-radius: 8px;
+        background-color: $surface-color;
+        overflow: hidden;
+      }
+
+      .cm-gutters {
+        background: #1e1e1e !important;
+        color: #999 !important;
+        border-right: 1px solid #333 !important;
+      }
+      .cm-lineNumbers {
+        min-width: 3em;
+        text-align: right;
+      }
+    }
+
+    .form-error {
+      color: #ff6b6b;
+      background-color: rgba(255, 107, 107, 0.1);
+      border: 1px solid #ff6b6b;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+    }
+
+    .submit-btn {
+      align-self: flex-start;
+      padding: 0.8rem 1.6rem;
+      background-color: $primary-color;
+      color: $background-color;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: color.adjust($primary-color, $lightness: 10%);
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .detail__row {
+      flex-direction: column;
+    }
+  }
+}
+/* ==== Popup chọn loại ==== */
+/* Popup chọn loại element */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 300px;
+}
+
+.popup-buttons button {
+  margin: 8px;
+  padding: 8px 14px;
+  border: none;
+  background: #0078ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.popup-buttons button:hover {
+  background: #005fcc;
+}
+
+.popup h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.popup-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.popup-item {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f7f7f7;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.popup-item:hover {
+  background: #e8e8e8;
+}
+
+.popup-item.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.popup-actions {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.popup-btn {
+  padding: 6px 14px;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* Modern popup overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Popup box */
+.popup-modern {
+  background: #111;
+  color: white;
+  border-radius: 14px;
+  padding: 28px 32px;
+  width: 540px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: popupFade 0.3s ease;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.popup-header {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.popup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.popup-item {
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  text-align: center;
+  padding: 24px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.popup-item:hover {
+  border-color: #4f8cff;
+  background: #1e1e1e;
+}
+
+.popup-item.selected {
+  border-color: #4f8cff;
+  box-shadow: 0 0 6px rgba(79, 140, 255, 0.7);
+  background: linear-gradient(145deg, #1a1a1a, #1d1f2a);
+}
+
+.popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-tech {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.popup-tech span {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.tech-options {
+  display: flex;
+  gap: 8px;
+}
+
+.tech-btn {
+  background: #222;
+  border: 1px solid #333;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: #ccc;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tech-btn.active {
+  background: #005cff;
+  border-color: #0078ff;
+  color: white;
+}
+
+.tech-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.continue-btn {
+  background: #5a5aff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.continue-btn:hover {
+  background: #6a6aff;
+}
+
+.continue-btn:disabled {
+  background: #333;
+  color: #777;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; // Khoảng cách giữa 2 nút bên phải
+  padding: 0.75rem 1rem;
+  margin-top: 2rem;
+  background-color: #1e1e1e; // Màu nền tối của thanh bar
+  border-radius: 12px;
+  border: 1px solid #373a40;
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; // Khoảng cách giữa icon và chữ
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    // Căn chỉnh icon cho đẹp
+    svg {
+      font-size: 1.1em;
+    }
+  }
+
+  // Nút phụ (Change type, Save as draft)
+  .secondary {
+    background-color: transparent;
+    color: #c1c2c5;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    // Đẩy nút "Change type" sang hẳn bên trái
+    &:first-child {
+      margin-right: auto;
+    }
+  }
+
+  // Nút chính (Submit for review)
+  .primary {
+    background-color: #4c6ef5; // Màu xanh/tím chủ đạo
+    color: white;
+
+    &:hover {
+      background-color: #5b7aff; // Màu sáng hơn khi hover
+    }
+  }
+
+  // Kiểu khi nút bị vô hiệu hóa
+  .action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

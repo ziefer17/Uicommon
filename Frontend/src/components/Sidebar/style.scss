@@ -1,0 +1,62 @@
+// src/components/Sidebar/style.scss
+
+// Giả sử Navbar của bạn cao khoảng 60px hoặc 70px.
+// Hãy chỉnh số 70px bên dưới khớp với chiều cao Navbar của bạn.
+$navbar-height: 70px;
+
+.sidebar {
+  width: 250px; // Chiều rộng cố định
+  min-width: 250px; // Không cho co nhỏ lại
+
+  // 👇 QUAN TRỌNG: Giúp sidebar đứng yên khi cuộn trang
+  position: sticky;
+  top: $navbar-height; // Cách đỉnh màn hình đúng bằng chiều cao Navbar
+  height: calc(100vh - #{$navbar-height}); // Chiều cao bằng màn hình trừ Navbar
+
+  // Styling giao diện
+  background-color: #000; // Màu nền
+  border-right: 1px solid #333; // 👉 Thêm đường kẻ mờ để ngăn cách với nội dung
+  padding: 20px 0;
+  overflow-y: auto; // Nếu menu dài quá thì cho cuộn riêng trong sidebar
+
+  display: flex;
+  flex-direction: column;
+
+  .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 0 12px;
+    gap: 4px; // Khoảng cách giữa các nút
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #999; // Màu chữ mờ khi chưa active
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      font-size: 14px;
+      font-weight: 500;
+
+      .icon {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      &.active {
+        background-color: #333; // Màu nền khi đang chọn (như trong hình là nút All)
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+  }
+}

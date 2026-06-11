@@ -1,0 +1,133 @@
+$background-dark: #0a0a0a;
+$card-bg: #1c1c1c;
+$card-bg-hover: #2a2a2a;
+$text-color: #f0f0f0;
+$primary-color: #3b82f6;
+$success-color: #10b981;
+$danger-color: #ef4444;
+@use "sass:color";
+
+.review-dashboard {
+  padding: 3rem 2rem;
+  background-color: $background-dark;
+  color: $text-color;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .review-dashboard__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: $primary-color;
+    border-bottom: 2px solid $card-bg-hover;
+    padding-bottom: 0.5rem;
+  }
+
+  .review-dashboard__loading,
+  .review-dashboard__empty-message {
+    text-align: center;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    padding: 2rem;
+  }
+
+  .review-dashboard__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: stretch;
+  }
+}
+
+.review-card {
+  background: $card-bg;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-8px);
+    background: $card-bg-hover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .review-card__preview {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+    height: 350px;
+    margin-bottom: 1rem;
+  }
+
+  .review-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+
+    .review-card__author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+
+      .review-card__avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid $primary-color;
+      }
+
+      strong {
+        color: $text-color;
+        font-weight: 600;
+      }
+    }
+
+    .review-card__stats {
+      font-size: 0.95rem;
+      color: $primary-color;
+      font-weight: 500;
+    }
+
+    .review-card__actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+
+      .review-card__action {
+        flex: 1;
+        padding: 0.6rem 0.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: background-color 0.2s;
+        font-size: 0.9rem;
+
+        &--approve {
+          background-color: $success-color;
+          color: $background-dark;
+
+          &:hover {
+            background-color: color.adjust($success-color, $lightness: -10%);
+          }
+        }
+
+        &--reject {
+          background-color: $danger-color;
+          color: $text-color;
+
+          &:hover {
+            background-color: color.adjust($danger-color, $lightness: -10%);
+          }
+        }
+      }
+    }
+  }
+}

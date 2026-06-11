@@ -1,0 +1,124 @@
+/* ========================================================== */
+/* AccountSettings Component - style.scss (ĐÃ CHỈNH SỬA) */
+/* ========================================================== */
+
+$card-bg: #1e1e1e; /* Nền tối hơn một chút cho các khu vực nội dung */
+$text-color: #eee;
+$muted-color: #999;
+$border-color: #333;
+$danger-red: #cc3333; /* Màu đỏ đậm hơn cho nút */
+$danger-red-hover: #b32d2d;
+
+/* --- Tiêu đề các phần (Account Information, Danger Zone) --- */
+.account-section-title {
+  font-size: 1.2em; /* Nhỏ hơn một chút */
+  font-weight: 600;
+  color: $text-color;
+  margin-bottom: 10px; /* Giảm khoảng cách */
+
+  // Thêm biểu tượng trước tiêu đề phần
+  i {
+    margin-right: 10px;
+  }
+}
+
+/* --- 1. Account Information Card --- */
+.account-info-card {
+  background-color: #141414;
+  border-radius: 8px;
+  padding: 20px 25px;
+  margin-bottom: 40px;
+  box-shadow: none; /* Không có bóng */
+  border: 1px solid #1f242d;
+}
+
+.info-row {
+  /* Đã loại bỏ justify-content: space-between */
+  /* Không có display: flex */
+  padding: 10px 0;
+
+  /* LOẠI BỎ ĐƯỜNG KẺ PHÂN CÁCH */
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 0.9em; /* Nhỏ hơn */
+  font-weight: 500;
+  color: $muted-color;
+  width: auto; /* Tự động co giãn */
+  margin-bottom: 4px; /* Khoảng cách với giá trị */
+  display: block; /* Đảm bảo nó chiếm một dòng */
+}
+
+/* Trong style.scss */
+
+/* ... (sau info-label) */
+
+.info-value-block {
+  font-size: 1em;
+  font-weight: 600;
+  color: $text-color;
+  margin-top: 2px;
+}
+
+/* --- 2. Danger Zone Section --- */
+.danger-section {
+  margin-top: 30px;
+}
+
+.danger-hint {
+  color: $muted-color;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.delete-account-card {
+  /* KHÔNG CÓ VIỀN MÀU ĐỎ */
+  background-color: $card-bg;
+  border-radius: 8px;
+  padding: 15px 25px; /* Giảm padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none; /* Loại bỏ viền 1px solid rgba($danger-red, 0.3) */
+}
+
+.delete-text-group {
+  flex-grow: 1;
+}
+
+.delete-title {
+  font-size: 1em; /* Nhỏ hơn */
+  font-weight: 600;
+  color: $text-color;
+}
+
+.delete-description {
+  font-size: 0.9em;
+  color: $muted-color;
+  margin-top: 4px;
+}
+
+.delete-button {
+  background-color: $danger-red;
+  color: #fff;
+  padding: 8px 15px; /* Giảm padding nút */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500; /* Bớt đậm hơn */
+  font-size: 0.95em;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+
+  /* Điều chỉnh biểu tượng để khớp với ảnh: chỉ có chữ Delete Account */
+  i {
+    margin-right: 5px;
+    font-size: 1.1em;
+  }
+
+  &:hover {
+    background-color: $danger-red-hover;
+  }
+}

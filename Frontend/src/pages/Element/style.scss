@@ -1,0 +1,188 @@
+/* ===================================================================
+    LAYOUT TỔNG THỂ UICommons
+=================================================================== */
+
+.ui-layout {
+  display: flex;
+  width: 100%;
+  background-color: #0a0a0a;
+  color: white;
+}
+
+/* ===================================================================
+    MAIN CONTENT
+=================================================================== */
+
+.main-content {
+  flex: 1;
+  padding: 30px 40px;
+}
+
+/* ===================================================================
+    PAGE HEADER
+=================================================================== */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 16px;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ===================================================================
+    TOOLBAR (THEME DROPDOWN + SEARCH)
+=================================================================== */
+
+.toolbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.theme-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #eee;
+
+  .dropdown-icon {
+    color: #777;
+    transition: 0.2s ease;
+  }
+
+  &:hover .dropdown-icon {
+    color: white;
+    transform: translateY(2px);
+  }
+}
+
+/* ===========================
+       SEARCH BAR
+=========================== */
+
+.search-wrapper {
+  position: relative;
+  width: 260px;
+  margin-right: 38px;
+}
+
+.search-wrapper input {
+  width: 89%;
+  padding: 10px 40px 10px 14px;
+  border-radius: 8px;
+
+  background: #141414;
+  border: 1px solid #2c2c2c;
+
+  font-size: 14px;
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+.search-wrapper input::placeholder {
+  color: #777;
+}
+
+.search-wrapper input:focus {
+  background: #000;
+  border-color: #555;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* ===================================================================
+    GRID COMPONENTS
+=================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px 22px;
+  margin: 10px 0 0 0;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.stats span {
+  display: inline-flex;
+  align-items: center; /* Căn icon thẳng hàng với số */
+  gap: 5px;
+}
+
+.stats span svg {
+  width: 18px;
+  height: 18px;
+  transform: translateY(1px); /* đẩy icon lên 1px */
+}
+
+.card {
+  border: 1px solid #1f1f1f;
+  background: #111;
+  border-radius: 14px;
+  height: 420px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  transition: 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(128, 90, 255, 0.3);
+  }
+}
+
+/* ===================================================================
+    META (author + views + fav)
+=================================================================== */
+
+.meta {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.author strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  color: #aaa;
+}
+
+.empty {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #777;
+}

@@ -1,0 +1,342 @@
+/* ============================================================
+   shop.scss  –  import this once in your main.tsx / App.tsx
+   @import './styles/shop.scss';
+   ============================================================ */
+
+/* ── Crown badge on Home / Element cards ── */
+.card {
+  position: relative; /* ensure this is set */
+}
+
+.crown-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffd700;
+  font-size: 14px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  line-height: 1.6;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ── Navbar cart button + badge ── */
+.cart-btn {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 21px;
+  cursor: pointer;
+  color: #ccc;
+  line-height: 1;
+  padding: 4px;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Cart drawer overlay ── */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
+}
+
+.cart-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 340px;
+  background: #161616;
+  border-left: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  h3 {
+    color: #fff;
+    font-size: 17px;
+    margin: 0;
+  }
+}
+
+.cart-close {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cart-item-name {
+  color: #ddd;
+  font-size: 14px;
+}
+
+.cart-item-price {
+  color: #ffd700;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0 4px;
+
+  &:hover {
+    color: #f44;
+  }
+}
+
+.cart-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 15px;
+}
+
+.cart-footer {
+  padding-top: 20px;
+  border-top: 1px solid #222;
+}
+
+.cart-total {
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 14px;
+
+  strong {
+    color: #fff;
+  }
+}
+
+.cart-checkout-btn {
+  width: 100%;
+  padding: 13px;
+  background: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: #f0c800;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.cart-success {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+
+  > span {
+    font-size: 52px;
+  }
+
+  h3 {
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+  }
+
+  p {
+    color: #888;
+    margin: 0;
+  }
+
+  .cart-success-total {
+    color: #ffd700;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .cart-success-txns {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    code {
+      background: #222;
+      color: #ffd700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  }
+
+  button {
+    margin-top: 8px;
+    padding: 10px 28px;
+    background: #2a2a2a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: #333;
+    }
+  }
+}
+
+/* ── Code blur overlay on Detail page ── */
+.tabs__content-wrap {
+  position: relative;
+}
+
+.code-blurred {
+  filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.blur-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.blur-cta {
+  background: #141414;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 32px 44px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  .crown-big {
+    font-size: 40px;
+  }
+
+  h3 {
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .cta-price {
+    color: #ffd700;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .add-cart-btn {
+    padding: 10px 30px;
+    background: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background: #f0c800;
+    }
+  }
+
+  .in-cart-btn {
+    padding: 10px 30px;
+    background: transparent;
+    color: #ffd700;
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 215, 0, 0.08);
+    }
+  }
+
+  .login-cta {
+    color: #888;
+    font-size: 13px;
+    margin: 0;
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+  }
+}

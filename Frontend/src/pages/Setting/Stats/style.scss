@@ -1,0 +1,124 @@
+/* ========================================================== */
+/* StatsPage Component - style.scss                         */
+/* ========================================================== */
+
+$card-bg: #1a1a1a;
+$text-color: #eee;
+$muted-color: #999;
+$border-color: #333;
+$chart-line-color: #4f46e5; /* Màu xanh/tím cho đường biểu đồ */
+
+/* --- 1. Metrics Grid --- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau */
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background-color: black;
+  border-radius: 8px;
+  padding: 20px 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: 100px; /* Chiều cao cố định */
+  border: 2px solid #1f242d;
+}
+
+.card-title {
+  font-size: 1em;
+  font-weight: 500;
+  color: $muted-color;
+  margin-bottom: 5px;
+}
+
+.card-value {
+  font-size: 2em;
+  font-weight: 700;
+  color: $text-color;
+}
+
+/* --- 2. Chart Section --- */
+.chart-section-card {
+  background-color: black;
+  border-radius: 8px;
+  padding: 20px 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #1f242d;
+}
+
+.chart-header {
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: $text-color;
+}
+
+.chart-subtitle {
+  font-size: 0.9em;
+  color: $muted-color;
+  margin-top: 2px;
+}
+
+.chart-container {
+  display: flex;
+  height: 300px;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.chart-y-axis {
+  width: 30px; /* Chiều rộng cho trục Y */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 15px; /* Khoảng đệm để căn chỉnh với trục X */
+  font-size: 0.85em;
+  color: $muted-color;
+  text-align: right;
+}
+
+.y-label {
+  height: 100%; /* Đảm bảo các nhãn chia đều không gian */
+}
+
+.chart-drawing-area {
+  flex-grow: 1;
+  position: relative;
+  border-left: 1px solid $border-color; /* Đường kẻ trục Y */
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Đường kẻ mô phỏng biểu đồ (vì chưa có dữ liệu) */
+.mock-line-chart {
+  position: absolute;
+  bottom: 15px; /* Căn chỉnh với trục X */
+  left: 10px;
+  right: 0;
+  height: 1px;
+  background-color: $chart-line-color; /* Đường ngang màu xanh/tím */
+}
+
+.chart-x-axis {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75em; /* Kích thước nhỏ hơn cho nhãn ngày tháng */
+  color: $muted-color;
+  padding-right: 5px;
+  white-space: nowrap; /* Ngăn nhãn bị xuống dòng */
+  transform: translateY(100%); /* Đẩy trục X xuống dưới đường kẻ */
+}
+
+.x-label {
+  text-align: center;
+  transform: translateX(-50%); /* Căn giữa nhãn dưới điểm */
+}

@@ -1,0 +1,165 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #000;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 4px 8px;
+    border-radius: 6px;
+
+    .ui {
+      color: #7c3aed;
+    }
+  }
+
+  .menu {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin-left: 24px;
+
+    li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+
+      &:hover {
+        color: #7c3aed;
+      }
+    }
+  }
+
+  .actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .create-btn {
+      background: #7c3aed;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: #5b21b6;
+      }
+    }
+
+    .user-profile-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 4px 4px 12px;
+      border-radius: 50px;
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #2a2a2a;
+      }
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      span {
+        font-weight: 500;
+        color: #e0e0e0;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+/* Container cho avatar + dropdown */
+.user-profile-container {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+
+/* Dropdown menu */
+.profile-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px); // nằm ngay dưới avatar
+  background: #1e1f22;
+  color: #fff;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  padding: 8px 0;
+  z-index: 9999;
+
+  // chặn scroll ngang, chỉ cho scroll dọc nếu quá cao
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a,
+      button {
+        display: block;
+        padding: 10px 16px;
+        color: #fff;
+        text-decoration: none;
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+
+        &:hover {
+          background: #2b2d31;
+        }
+      }
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background: #333;
+    margin: 6px 0;
+  }
+
+  .discord-link {
+    color: #5865f2;
+    font-weight: 500;
+  }
+
+  .logout-menu-btn {
+    color: #ff4d4f;
+    font-weight: bold;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}

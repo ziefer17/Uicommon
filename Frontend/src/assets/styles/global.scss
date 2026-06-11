@@ -1,0 +1,11 @@
+@import "variables";
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  background: #f8f9fa;
+}
+
+h1 {
+  color: $primary-color;
+}
