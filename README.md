@@ -1,5 +1,5 @@
 An AI slop version of Uiverse that will inevitably get deleted  
-UIcommon is a library of UI components, made by Nodejs, React, Typescript and MongoDB 7.0.  
+UIcommon is a library of UI components, made by Nodejs, React, Typescript and MongoDB 7.0. This is an ecommerce fork of Igiss/UICommons.
 backend env:
 ```
 
